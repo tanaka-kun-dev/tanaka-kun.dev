@@ -1,0 +1,128 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const projects = [
+  {
+    title: "youtube-bgm-pipeline",
+    period: "2026/5 -",
+    status: "Day 30 公開予定",
+    summary:
+      "YouTube BGM 8時間動画を Gemini + FFmpeg + YouTube Data API で完全自動投稿するパイプライン。",
+    tech: "TypeScript / FFmpeg / Gemini Imagen / YouTube Data API v3 / Anthropic Skills",
+    details: [
+      "Ken Burns 効果のランダム化で AI Slop 規制 (2025/7~) を回避",
+      "ユニーク度スコア (uniqueness-score.ts) で公開前の品質ゲート",
+      "実機ベンチマーク: 1分動画=4.7秒 / 8時間=30〜60分エンコード",
+      "月コスト ¥2,000 (Epidemic Sound + Imagen)",
+    ],
+    decisions: [
+      "Storyblocks ($30) より Epidemic Sound ($9.99) を選定 → YouTube Content ID 事前クリアが決め手",
+      "TikTok / Instagram は除外 → 個人 API 投稿が現実的でないため",
+      "動画生成は Pika ではなく Runway を採用 → Pika Basic は商用不可",
+    ],
+    href: "https://github.com/tanaka-kun-dev/youtube-bgm-pipeline",
+  },
+  {
+    title: "店舗ページ制作 (受託)",
+    period: "2026/5 -",
+    status: "受付中",
+    summary:
+      "予約導線が迷子にならない店舗ページを5営業日で制作する受託サービス。Cloudflare Pages 無料枠で運用。",
+    tech: "Astro / Tailwind CSS / Cloudflare Pages",
+    details: [
+      "業種別テンプレ4種 (スクール / 治療院 / ジム / イベント)",
+      "公開窓口・1店舗1通・オプトアウト明記の3条件で営業フローを法的にクリア",
+      "Plan B (月額保守): 予約 MCP 連携 + 月次予約データ分析レポート",
+    ],
+    decisions: [
+      "美容院・飲食店は除外 → 競合過多 + Hot Pepper 等のプラットフォームが強い",
+      "治療院最優先 → 福岡市の需要が高い + テンプレ転用が効きやすい",
+      "ミニマム型は地方市場に空白ポジションがあると判断",
+    ],
+    href: null,
+  },
+  {
+    title: "店舗予約系 MCP",
+    period: "2026/6 -",
+    status: "調査・設計中",
+    summary:
+      "店舗の予約データを Claude から扱える MCP サーバー。受託の月次レポート自動化と直結させる。",
+    tech: "TypeScript / MCP SDK / OAuth 2.0",
+    details: [
+      "freee-mcp 公式 OSS が既存と判明 → 店舗予約系にピボット",
+      "予約 API 公開状況 (LiMA / STORES予約 / Square予約) を Day 30 までに調査",
+      "受託サービスの月額保守オプションの値上げ材料として接続",
+    ],
+    decisions: [
+      "公式 freee-mcp との重複は学習資産化、新規 MCP は店舗予約系に方向転換",
+      "予約データ分析レポート (A4 1枚) を Claude が自動生成する設計を優先",
+    ],
+    href: null,
+  },
+  {
+    title: "freee-mcp (個人学習版)",
+    period: "2026/4 - 5",
+    status: "学習資産として公開",
+    summary:
+      "freee 会計 API を Claude から扱える MCP サーバー。公式版の登場後は学習資産として残し、比較記事に活用。",
+    tech: "TypeScript / MCP SDK / OAuth 2.0",
+    details: [
+      "公式版 (github.com/freee/freee-mcp) が 2026/3/2 に既出と判明",
+      "本リポジトリは読みやすさ重視の最小実装",
+      "Zenn 記事「公式 freee-mcp vs 自作: MCP 開発の学び」を準備中",
+    ],
+    decisions: [
+      "撤退ではなく学習資産として残す → 採用時の意思決定ログとして価値がある",
+      "プロダクション利用は公式版を推奨することを README で明記",
+    ],
+    href: null,
+  },
+];
+---
+
+<BaseLayout title="Projects · tanaka-kun-dev">
+  <section class="py-12">
+    <h1 class="text-4xl font-bold mb-2">Projects</h1>
+    <p class="text-ink-50/60 mb-12">
+      実装してきたもの・実装中のもの。各プロジェクトに「意思決定ログ」を添えています。
+    </p>
+
+    <div class="space-y-12">
+      {
+        projects.map((p) => (
+          <article class="border border-ink-50/10 rounded p-6">
+            <div class="flex items-start justify-between mb-3 gap-4">
+              <h2 class="text-2xl font-bold">{p.title}</h2>
+              <span class="text-xs text-ink-50/60 font-mono whitespace-nowrap">
+                {p.status}
+              </span>
+            </div>
+            <p class="text-xs font-mono text-ink-50/60 mb-3">{p.period}</p>
+            <p class="text-ink-50/80 mb-4">{p.summary}</p>
+            <p class="text-xs font-mono text-gold mb-6">{p.tech}</p>
+
+            <h3 class="text-sm font-bold text-ink-50/80 mb-2">実装詳細</h3>
+            <ul class="list-disc list-outside ml-5 text-sm text-ink-50/70 mb-6 space-y-1">
+              {p.details.map((d) => (
+                <li>{d}</li>
+              ))}
+            </ul>
+
+            <h3 class="text-sm font-bold text-ink-50/80 mb-2">意思決定ログ</h3>
+            <ul class="list-disc list-outside ml-5 text-sm text-ink-50/70 space-y-1">
+              {p.decisions.map((d) => (
+                <li>{d}</li>
+              ))}
+            </ul>
+
+            {p.href && (
+              <a href={p.href} class="inline-block mt-6 text-sm text-gold hover:underline">
+                リポジトリを見る →
+              </a>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

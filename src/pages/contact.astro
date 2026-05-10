@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+// 本人が公開メールを取得したら、ここを差し替える。
+// 取得前は X DM / GitHub Issue を一次窓口として運用する。
+const contactEmail: string | null = null; // 例: "hi@tanaka-kun.dev"
+---
+
+<BaseLayout title="Contact · tanaka-kun-dev">
+  <section class="py-12 max-w-2xl">
+    <h1 class="text-4xl font-bold mb-2">Contact</h1>
+    <p class="text-ink-50/60 mb-12">仕事の相談・取材・採用のご連絡はこちらから。</p>
+
+    <div class="space-y-10 text-ink-50/80">
+      <div>
+        <h2 class="text-xl font-bold text-gold mb-3">仕事の相談</h2>
+        <p>
+          店舗ページ制作 / MCP サーバー開発 / 業務自動化パイプライン構築 のご相談を受けています。
+          まずは下記のいずれかからお気軽にどうぞ。
+        </p>
+        {
+          contactEmail ? (
+            <p class="mt-3 font-mono">
+              <a href={`mailto:${contactEmail}`} class="text-gold hover:underline">
+                {contactEmail}
+              </a>
+            </p>
+          ) : (
+            <p class="mt-3 text-sm text-ink-50/60">
+              ※ 公開メールアドレスは準備中です。当面は X の DM か GitHub Issue を窓口にしています。
+            </p>
+          )
+        }
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gold mb-3">SNS / GitHub</h2>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://x.com/tanaka_kun_dev" class="hover:underline">
+              X: @tanaka_kun_dev (DM 開放)
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tanaka-kun-dev" class="hover:underline">
+              GitHub: @tanaka-kun-dev (Issue / Discussion 可)
+            </a>
+          </li>
+          <li>
+            <a href="https://zenn.dev/tanakakun" class="hover:underline">
+              Zenn: @tanakakun (記事へのコメント可)
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gold mb-3">受けない依頼</h2>
+        <ul class="list-disc list-outside ml-5 text-sm space-y-1 text-ink-50/60">
+          <li>「絶対に集客できる」「100% 売れる」を保証する依頼 (景品表示法的にも不可)</li>
+          <li>テンプレ複製の量産 (AI Slop に該当する依頼)</li>
+          <li>規約違反前提の自動化 (各プラットフォームのコピー投稿等)</li>
+          <li>個人情報・機密情報を AI に直接送信する設計</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "22歳・福岡 × AI/DX 自動化エンジニア。MCP・Claude Code・OSS で実装する。" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- OGP -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="tanaka-kun-dev" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "tanaka-kun-dev",
+      "jobTitle": "AI/DX Automation Engineer",
+      "url": "https://tanaka-kun.dev",
+      "sameAs": [
+        "https://github.com/tanaka-kun-dev",
+        "https://x.com/tanaka_kun_dev",
+        "https://zenn.dev/tanakakun"
+      ]
+    })} />
+  </head>
+  <body class="bg-ink-900 text-ink-50 font-ja antialiased min-h-screen">
+    <header class="border-b border-ink-50/10">
+      <nav class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="font-mono text-xl tracking-tight text-gold">tanaka-kun-dev</a>
+        <ul class="flex gap-6 text-sm">
+          <li><a href="/projects" class="hover:text-gold transition-colors">Projects</a></li>
+          <li><a href="/blog" class="hover:text-gold transition-colors">Blog</a></li>
+          <li><a href="/about" class="hover:text-gold transition-colors">About</a></li>
+          <li><a href="/contact" class="hover:text-gold transition-colors">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+      <slot />
+    </main>
+
+    <footer class="border-t border-ink-50/10 mt-24">
+      <div class="max-w-4xl mx-auto px-6 py-8 text-sm text-ink-50/60">
+        <p>© 2026 tanaka-kun-dev · Built with Astro · Hosted on Cloudflare Pages</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About · tanaka-kun-dev">
+  <section class="py-12">
+    <h1 class="text-4xl font-bold mb-2">About</h1>
+    <p class="text-ink-50/60 mb-12">私について。</p>
+
+    <div class="prose prose-invert max-w-none space-y-10">
+      <div>
+        <h2 class="text-2xl font-bold mb-4">基本情報</h2>
+        <ul class="space-y-2 text-ink-50/80">
+          <li>22歳・福岡在住</li>
+          <li>アミューズメント店舗の経営を任されている (現場と数字の両方を見る立場)</li>
+          <li>個人事業主として AI/DX 自動化の受託・OSS・発信</li>
+          <li>顔出しなし、テキストとコードで活動 (tanaka-kun-dev 名義)</li>
+          <li>2026/7-8 を目処に AI/DX 領域の企業への転職を検討中</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold mb-4">私のストーリー</h2>
+        <div class="text-ink-50/80 space-y-4">
+          <p>
+            22歳で店舗運営を任されたとき、最初にぶつかったのは「人手でやると確実にミスる作業」が
+            毎日積み上がることでした。スタッフの貴重な時間が、本来は顧客対応に使われるべきところで
+            データ入力やレポート作成に消えていく。これを変えたくて、Claude Code を導入したのが
+            自動化エンジニアリングを本気で学び始めた起点です。
+          </p>
+          <p>
+            最初は SNS 投稿の補助スクリプトから入り、そこから MCP サーバーの自作、店舗データの
+            分析パイプライン、外部向けの自動化受託、と範囲を広げてきました。
+            現場で「実際に使われるか」を確かめながら作っているので、デモで終わらないことを
+            一番大事にしています。
+          </p>
+          <p>
+            これからは、店舗運営で得た「ビジネスの肌感覚」と、独学で積み上げた
+            「AI/DX 実装スキル」を両方活かせる場所に移りたい、と考えています。
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold mb-4">強み</h2>
+        <ol class="list-decimal list-outside ml-6 space-y-3 text-ink-50/80">
+          <li>
+            <strong>個人で完結する実装力</strong>:
+            TypeScript を主軸に、AI / インフラ / フロントまで一人で動かせる。
+            直近1年で MCP / FFmpeg / OAuth / YouTube Data API / Anthropic Skills を
+            ドキュメントだけ見て実装。
+          </li>
+          <li>
+            <strong>意思決定の言語化</strong>:
+            各 OSS の README に「なぜこの設計か」「どこで失敗したか」を記録。
+            チュートリアル丸写しではなく、選択の根拠を残す癖がついている。
+          </li>
+          <li>
+            <strong>現場で数字を見る経験</strong>:
+            店舗運営で SNS 運用・KPI 設計・スタッフ管理を実務で回している。
+            Claude Code の導入で月10時間以上の作業を削減した実績あり。
+          </li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold mb-4">技術スタック</h2>
+        <div class="grid grid-cols-2 gap-6 text-sm not-prose">
+          <div>
+            <h3 class="font-bold text-gold mb-2">言語</h3>
+            <ul class="text-ink-50/80 space-y-1">
+              <li>TypeScript (メイン)</li>
+              <li>Python (補助)</li>
+              <li>Go (学習中)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-gold mb-2">フレームワーク</h3>
+            <ul class="text-ink-50/80 space-y-1">
+              <li>Astro</li>
+              <li>Next.js</li>
+              <li>Tailwind CSS</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-gold mb-2">AI / Agent</h3>
+            <ul class="text-ink-50/80 space-y-1">
+              <li>Anthropic Claude API / Claude Code</li>
+              <li>Google Gemini API</li>
+              <li>MCP / Anthropic Skills</li>
+              <li>Strands Agents (検証中)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-gold mb-2">インフラ</h3>
+            <ul class="text-ink-50/80 space-y-1">
+              <li>Cloudflare Pages / Workers</li>
+              <li>Vercel</li>
+              <li>Hetzner / Vultr VPS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold mb-4">転職で重視している条件</h2>
+        <ul class="text-ink-50/80 space-y-1 list-disc list-outside ml-6">
+          <li>AI/DX 領域 (生成 AI / Agent / MCP / 業務自動化)</li>
+          <li>フルリモート可</li>
+          <li><strong class="text-gold">副業 OK が明記されていること</strong></li>
+          <li>年収 400 万円〜が一つの目安 (条件次第で柔軟)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold mb-4">連絡先</h2>
+        <ul class="text-ink-50/80 space-y-2 list-none ml-0">
+          <li>
+            <a href="https://github.com/tanaka-kun-dev" class="text-gold hover:underline">GitHub: @tanaka-kun-dev</a>
+          </li>
+          <li>
+            <a href="https://x.com/tanaka_kun_dev" class="text-gold hover:underline">X: @tanaka_kun_dev</a>
+          </li>
+          <li>
+            <a href="https://zenn.dev/tanakakun" class="text-gold hover:underline">Zenn: @tanakakun</a>
+          </li>
+          <li>
+            <a href="/contact" class="text-gold hover:underline">問い合わせ →</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

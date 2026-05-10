@@ -1,0 +1,89 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "tanaka-kun-dev docs",
+  "logo": {
+    "light": "/images/logo-light.svg",
+    "dark": "/images/logo-dark.svg",
+    "href": "https://tanaka-kun.dev"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#D4AF37",
+    "light": "#E8C766",
+    "dark": "#B8941F",
+    "background": {
+      "light": "#F5F5F4",
+      "dark": "#0A0A0A"
+    },
+    "anchors": {
+      "from": "#D4AF37",
+      "to": "#B8941F"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Portfolio",
+      "url": "https://tanaka-kun.dev"
+    },
+    {
+      "name": "Contact",
+      "url": "https://tanaka-kun.dev/contact"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "GitHub",
+    "url": "https://github.com/tanaka-kun-dev"
+  },
+  "anchors": [
+    {
+      "name": "Projects",
+      "icon": "code",
+      "url": "https://tanaka-kun.dev/projects"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://tanaka-kun.dev/blog"
+    },
+    {
+      "name": "Zenn",
+      "icon": "book",
+      "url": "https://zenn.dev/tanakakun"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "はじめに",
+      "pages": ["introduction"]
+    },
+    {
+      "group": "Projects",
+      "pages": [
+        "projects/youtube-bgm-pipeline",
+        "projects/store-mcp"
+      ]
+    },
+    {
+      "group": "ノート",
+      "pages": [
+        "notes/decision-log",
+        "notes/stack-choices"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/tanaka-kun-dev",
+    "x": "https://x.com/tanaka_kun_dev"
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
+  "search": {
+    "prompt": "ドキュメントを検索…"
+  },
+  "metadata": {
+    "og:site_name": "tanaka-kun-dev docs"
+  }
+}

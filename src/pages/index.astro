@@ -1,0 +1,137 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const pillars = [
+  {
+    title: "AI/DX 受託",
+    description:
+      "店舗ページ制作・自動化パイプライン構築。Astro / Cloudflare / Claude Code を中心に、現場で使える納品物を5営業日で出す。",
+    link: "/projects",
+    linkLabel: "実装中の案件",
+  },
+  {
+    title: "OSS / MCP",
+    description:
+      "Model Context Protocol サーバーや自動化ツールを GitHub に公開。意思決定ログ込みで、コードと一緒に「なぜこの設計か」も残す。",
+    link: "https://github.com/tanaka-kun-dev",
+    linkLabel: "GitHub",
+  },
+  {
+    title: "Build in Public",
+    description:
+      "実装と検証の過程を Zenn / X で発信。未完成や撤退判断もそのまま書く。テンプレ量産ではなく、再現できる形で残す。",
+    link: "/blog",
+    linkLabel: "記事を読む",
+  },
+];
+
+const highlights = [
+  {
+    name: "youtube-bgm-pipeline",
+    description:
+      "YouTube BGM 動画を Gemini + FFmpeg で自動生成・投稿するパイプライン。AI Slop 規制を踏まえた品質ゲート付き。",
+    status: "Day 30 公開予定",
+    href: "/projects",
+  },
+  {
+    name: "店舗ページ制作 (受託)",
+    description:
+      "予約導線が迷子にならない店舗ページを Astro で制作。Cloudflare Pages 無料枠で運用、月額保守オプションあり。",
+    status: "受付中",
+    href: "/projects",
+  },
+  {
+    name: "店舗予約系 MCP",
+    description:
+      "店舗の予約 API を Claude から扱える MCP サーバー。受託の月次レポート自動化に直結。",
+    status: "調査・設計中",
+    href: "/projects",
+  },
+];
+---
+
+<BaseLayout title="tanaka-kun-dev · AI/DX 自動化エンジニア">
+  <section class="py-16">
+    <p class="text-sm font-mono text-gold mb-4">22yo · founder · AI/DX engineer</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+      <span class="text-gold">22歳・経営者</span>として現場に立ちながら、<br />
+      AI/DX 自動化を実装しています。
+    </h1>
+    <p class="mt-6 text-lg text-ink-50/80 max-w-2xl">
+      アミューズメント店舗の運営を任されている経営者です。
+      日々の業務で発生する「人手でやるとミスる作業」を、Claude Code・MCP・Astro・FFmpeg で
+      コードに落として解決しています。受託・OSS・発信の3本柱で動いています。
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/projects"
+        class="inline-block bg-gold text-ink-900 px-6 py-3 rounded font-bold hover:bg-gold/80 transition-colors"
+      >
+        Projects を見る
+      </a>
+      <a
+        href="https://github.com/tanaka-kun-dev"
+        class="inline-block border border-ink-50/30 px-6 py-3 rounded hover:bg-ink-50/5 transition-colors"
+      >
+        GitHub
+      </a>
+      <a
+        href="/contact"
+        class="inline-block border border-ink-50/30 px-6 py-3 rounded hover:bg-ink-50/5 transition-colors"
+      >
+        相談する
+      </a>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-ink-50/10">
+    <h2 class="text-2xl font-bold mb-2">活動の3本柱</h2>
+    <p class="text-sm text-ink-50/60 mb-8">
+      受託で「現場で使えるか」を検証し、OSS で「再現できる形」に整理し、発信で「意思決定ログ」を残す。
+    </p>
+    <div class="grid md:grid-cols-3 gap-6">
+      {
+        pillars.map((p) => (
+          <article class="border border-ink-50/10 rounded p-6 hover:border-gold/30 transition-colors">
+            <h3 class="text-lg font-bold mb-3">{p.title}</h3>
+            <p class="text-sm text-ink-50/80 mb-4">{p.description}</p>
+            <a href={p.link} class="text-sm text-gold hover:underline">
+              {p.linkLabel} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-ink-50/10">
+    <h2 class="text-2xl font-bold mb-8">最近のプロジェクト</h2>
+    <div class="grid gap-4">
+      {
+        highlights.map((h) => (
+          <a
+            href={h.href}
+            class="block border border-ink-50/10 rounded p-5 hover:border-gold/30 transition-colors"
+          >
+            <div class="flex items-start justify-between mb-2 gap-4">
+              <h3 class="text-lg font-bold">{h.name}</h3>
+              <span class="text-xs text-ink-50/60 font-mono whitespace-nowrap">
+                {h.status}
+              </span>
+            </div>
+            <p class="text-sm text-ink-50/80">{h.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-ink-50/10">
+    <h2 class="text-2xl font-bold mb-4">考えていること</h2>
+    <p class="text-ink-50/80 mb-4">
+      AI で「楽して稼ぐ」と「真っ当な技術力」は両立できる、と仮定して検証しています。
+      検証の途中経過は Blog に残します。
+    </p>
+    <a href="/blog" class="inline-block text-gold hover:underline">Blog を読む →</a>
+  </section>
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+// Zenn 記事は外部リンクで管理。記事公開ごとにここへ追記する。
+const drafts = [
+  {
+    title: "YouTube AI Slop 規制下でコンテンツ自動化を設計した話",
+    summary:
+      "2025/7 から強化された YouTube の inauthentic content ポリシーを踏まえ、AI 自動生成の品質ゲートを5レイヤーで設計した記録。",
+    plannedAt: "2026-05",
+    href: null,
+  },
+  {
+    title: "Storyblocks vs Epidemic Sound: 月¥30K 削った意思決定ログ",
+    summary:
+      "ChatGPT が推奨した Storyblocks より Epidemic Sound を選んだ理由。YouTube Content ID 事前クリアの差をどう評価したか。",
+    plannedAt: "2026-05",
+    href: null,
+  },
+  {
+    title: "freee-mcp 自作 vs 公式: 重複を価値に転換した話",
+    summary:
+      "公式版の存在を開発後に知ったとき、捨てずに「学習資産」として残し、比較記事に転換するまでの判断プロセス。",
+    plannedAt: "2026-05",
+    href: null,
+  },
+];
+
+const published: Array<{ title: string; summary: string; publishedAt: string; href: string }> = [];
+---
+
+<BaseLayout title="Blog · tanaka-kun-dev">
+  <section class="py-12">
+    <h1 class="text-4xl font-bold mb-2">Blog</h1>
+    <p class="text-ink-50/60 mb-12">
+      Zenn に書いた記事のインデックスです。意思決定ログ・撤退判断・小さな検証の記録を中心に。
+    </p>
+
+    {
+      published.length > 0 ? (
+        <div class="space-y-6 mb-12">
+          {published.map((post) => (
+            <article class="border border-ink-50/10 rounded p-6 hover:border-gold/30 transition-colors">
+              <h2 class="text-xl font-bold mb-2">{post.title}</h2>
+              <p class="text-xs text-ink-50/60 font-mono mb-3">{post.publishedAt}</p>
+              <p class="text-ink-50/80 mb-4">{post.summary}</p>
+              <a href={post.href} class="text-sm text-gold hover:underline">
+                Zenn で読む →
+              </a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="border border-dashed border-ink-50/20 rounded p-6 mb-12 text-sm text-ink-50/60">
+          公開済み記事はまだありません。下に公開予定の草稿を載せています。
+        </div>
+      )
+    }
+
+    <h2 class="text-2xl font-bold mb-2">公開予定の草稿</h2>
+    <p class="text-sm text-ink-50/60 mb-6">
+      草稿段階のテーマ。順次 Zenn に出していきます。
+    </p>
+    <div class="space-y-6">
+      {
+        drafts.map((draft) => (
+          <article class="border border-ink-50/10 rounded p-6">
+            <h3 class="text-lg font-bold mb-2">{draft.title}</h3>
+            <p class="text-xs text-ink-50/60 font-mono mb-3">{draft.plannedAt} 公開予定</p>
+            <p class="text-sm text-ink-50/80">{draft.summary}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 text-sm text-ink-50/60">
+      最新の更新は <a href="https://zenn.dev/tanakakun" class="text-gold hover:underline">Zenn (@tanakakun)</a> で。
+    </p>
+  </section>
+</BaseLayout>
