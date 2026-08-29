@@ -10,22 +10,23 @@
 - Cloudflare アカウントを取得済み
 - ドメイン `tanaka-kun.dev` を Cloudflare で取得済み (または他レジストラから移管予定)
 - GitHub アカウント `tanaka-kun-dev` を取得済み
-- ローカルで `pnpm build` が通る状態
+- ローカルで `npm run build` が通る状態
 
 ---
 
 ## STEP 1: GitHub リポジトリを準備する
 
-1. GitHub に新規リポジトリ `tanaka-kun-dev/tanaka-kun-dev` を作成 (Public 推奨)
+1. GitHub に新規リポジトリ `tanaka-kun-dev/tanaka-kun.dev` を作成 (Public 推奨)
+   - **※このリポジトリは作成済み・push済み（2026-05-10）。STEP 1 はスキップしてよい。**
 2. ローカルから push:
 
    ```bash
-   cd ./tanaka-kun-dev
+   cd ./tanaka-kun.dev
    git init
    git add .
    git commit -m "init: tanaka-kun.dev portfolio site"
    git branch -M main
-   git remote add origin https://github.com/tanaka-kun-dev/tanaka-kun-dev.git
+   git remote add origin https://github.com/tanaka-kun-dev/tanaka-kun.dev.git
    git push -u origin main
    ```
 
@@ -39,7 +40,7 @@
 2. 左メニュー → **Workers & Pages** → **Create application** → **Pages** タブ
 3. **Connect to Git** を選択
 4. GitHub アカウントを連携 (初回のみ Cloudflare の GitHub App を install)
-5. リポジトリ `tanaka-kun-dev/tanaka-kun-dev` を選択 → **Begin setup**
+5. リポジトリ `tanaka-kun-dev/tanaka-kun.dev` を選択 → **Begin setup**
 
 ### Build configuration
 
@@ -48,7 +49,7 @@
 | Project name | `tanaka-kun-dev` |
 | Production branch | `main` |
 | Framework preset | `Astro` |
-| Build command | `pnpm build` |
+| Build command | `npm run build` |
 | Build output directory | `dist` |
 | Root directory | (空欄でOK) |
 | Node version (環境変数) | `NODE_VERSION = 20` |
@@ -57,8 +58,8 @@
 
 ### つまずきポイント
 
-- pnpm が認識されない場合 → 環境変数に `PACKAGE_MANAGER = pnpm` を追加
-- ビルド失敗時は **View build log** で確認、ローカルの `pnpm build` と差分を比較
+- **パッケージマネージャは npm**（`package-lock.json` をコミット済みなので Cloudflare が自動判定する）。`pnpm` を指定すると失敗する
+- ビルド失敗時は **View build log** で確認、ローカルの `npm run build` と差分を比較
 
 ---
 
@@ -85,7 +86,7 @@
 - [ ] `https://tanaka-kun.dev/blog` が表示される
 - [ ] `https://tanaka-kun.dev/about` が表示される
 - [ ] `https://tanaka-kun.dev/contact` が表示される
-- [ ] `https://tanaka-kun.dev/sitemap-index.xml` が 200 を返す
+- [ ] ~~`https://tanaka-kun.dev/sitemap-index.xml` が 200 を返す~~ → **現状 sitemap は未導入**（`astro.config.mjs` に `@astrojs/sitemap` が無いため生成されない）。SEO のため導入推奨
 - [ ] DevTools で OGP / Twitter Card / JSON-LD が出ている
 - [ ] HTTPS の鍵マークが緑
 
@@ -111,7 +112,7 @@ PR を作るとプレビュー URL (`<branch>.tanaka-kun-dev.pages.dev`) が自�
 
 | 症状 | 確認ポイント |
 |------|------------|
-| ビルドが失敗する | `pnpm build` をローカルで再現、ログを比較 |
+| ビルドが失敗する | `npm run build` をローカルで再現、ログを比較 |
 | ドメインが繋がらない | Cloudflare DNS タブで CNAME が `tanaka-kun-dev.pages.dev` を向いているか |
 | SSL エラー | 証明書発行待ち (15分以内) / Cloudflare の SSL/TLS モードを `Full` に |
 | 404 が出る | `dist/` に該当 HTML があるか、`output: "static"` のままか確認 |
